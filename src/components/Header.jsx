@@ -64,14 +64,14 @@ export default function Header({
                 : "text-slate-500 hover:text-slate-800"
             }`}
           >
-            <FiLayers className="text-sm stroke-[2.5]" /> Financial Dashboard
+            <FiLayers className="text-sm stroke-[2.5]" /> Dashboard
           </button>
 
           <button
             onClick={() => {
               navigate("/transactions");
             }}
-            className={`text-xs font-semibold px-4 py-1.5 rounded-lg flex items-center gap-2 transition-all duration-200 ${
+            className={`text-xs cursor-pointer font-semibold px-4 py-1.5 rounded-lg flex items-center gap-2 transition-all duration-200 ${
               activeTab === "transactions"
                 ? "bg-white text-indigo-600 shadow-sm font-bold"
                 : "text-slate-500 hover:text-slate-800"
@@ -82,7 +82,9 @@ export default function Header({
         </nav>
         <div className="flex items-center gap-3">
           <button
-            onClick={onLogTransactionClick}
+            onClick={() => {
+              navigate("/transactions");
+            }}
             className="bg-indigo-600 cursor-pointer hover:bg-indigo-700 text-white font-semibold text-xs uppercase tracking-wider h-9 px-4 rounded-xl flex items-center gap-2 transition-all duration-150 active:scale-[0.98] select-none shadow-sm shadow-indigo-600/10"
           >
             <FiPlus className="text-sm stroke-[2.5]" />

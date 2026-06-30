@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Accounts from "./pages/Account";
 import Transactions from "./pages/Transactions";
+import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -84,6 +85,12 @@ export default function App() {
               ) : (
                 <Navigate to="/login" replace />
               )
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              isAuthenticated ? <Dashboard /> : <Navigate to="/login" replace />
             }
           />
         </Routes>

@@ -152,21 +152,21 @@ function Account({ onNavigate }) {
             <button
               type="button"
               onClick={() => setFilterMode("ALL")}
-              className={`text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all duration-200 ${filterMode === "ALL" ? "bg-white text-indigo-600 shadow-xs font-bold" : "text-slate-500 hover:text-slate-800"}`}
+              className={`text-xs cursor-pointer font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all duration-200 ${filterMode === "ALL" ? "bg-white text-indigo-600 shadow-xs font-bold" : "text-slate-500 hover:text-slate-800"}`}
             >
               <FiGrid /> All Accounts
             </button>
             <button
               type="button"
               onClick={() => setFilterMode("LIQUID")}
-              className={`text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all duration-200 ${filterMode === "LIQUID" ? "bg-white text-indigo-600 shadow-xs font-bold" : "text-slate-500 hover:text-slate-800"}`}
+              className={`text-xs cursor-pointer font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all duration-200 ${filterMode === "LIQUID" ? "bg-white text-indigo-600 shadow-xs font-bold" : "text-slate-500 hover:text-slate-800"}`}
             >
               <FiActivity /> Liquid Cash
             </button>
             <button
               type="button"
               onClick={() => setFilterMode("CREDIT CARD")}
-              className={`text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all duration-200 ${filterMode === "CREDIT CARD" ? "bg-white text-indigo-600 shadow-xs font-bold" : "text-slate-500 hover:text-slate-800"}`}
+              className={`text-xs cursor-pointer font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all duration-200 ${filterMode === "CREDIT CARD" ? "bg-white text-indigo-600 shadow-xs font-bold" : "text-slate-500 hover:text-slate-800"}`}
             >
               <FiCreditCard /> Credit Lines
             </button>
