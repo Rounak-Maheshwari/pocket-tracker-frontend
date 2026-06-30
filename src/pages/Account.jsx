@@ -354,8 +354,7 @@ function Account({ onNavigate }) {
           </div>
         ) : filteredAccounts.length === 0 ? (
           <div className="p-12 bg-white rounded-2xl border border-indigo-100/60 shadow-xs text-center text-xs text-slate-400 font-medium">
-            🍃 No active registry dimensions found matching this tab query
-            filter.
+            You don't have an account.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -7,9 +7,11 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 import { useAuth } from "../stores/AuthContext";
+import { useNavigate, useNavigation } from "react-router-dom";
 
-export default function Register({ onNavigate }) {
+export default function Register() {
   const { register, isLoading, error, setError } = useAuth();
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -149,10 +151,9 @@ export default function Register({ onNavigate }) {
                 );
                 return;
               }
-
               try {
-                await register(username, email, password, "", "", "");
-                onNavigate("login");
+                await register(username, email, password, confirmPassword);
+                navigate("/login");
               } catch (err) {}
             }}
             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs uppercase tracking-wider h-11 px-4 rounded-xl shadow-md shadow-indigo-600/10 hover:shadow-indigo-600/20 flex items-center justify-center gap-2 transition-all duration-150 active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
@@ -172,7 +173,7 @@ export default function Register({ onNavigate }) {
               <button
                 onClick={() => {
                   if (setError) setError(null);
-                  onNavigate("login");
+                  navigate("/login");
                 }}
                 className="text-indigo-600 font-bold hover:text-indigo-700 focus:outline-none transition-colors cursor-pointer"
               >

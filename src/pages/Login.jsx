@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { FiMail, FiLock, FiAlertCircle, FiArrowRight } from "react-icons/fi";
 import { useAuth } from "../stores/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-export default function Login({ onNavigate }) {
+export default function Login() {
   const { login, isLoading, error, setError } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const [validationError, setValidationError] = useState("");
 
@@ -49,7 +51,7 @@ export default function Login({ onNavigate }) {
       <div className="mt-8 sm:mx-auto w-full max-w-md">
         <form
           onSubmit={handleLoginSubmit}
-          className="bg-white border border-violet-100/70 p-6 sm:p-10 rounded-2xl shadow-[0_12px_40px_rgba(238,242,255,0.4)] space-y-6"
+          className="bg-white border border-indigo-100/70 p-6 sm:p-10 rounded-2xl shadow-[0_12px_40px_rgba(238,242,255,0.4)] space-y-6"
         >
           {(error || validationError) && (
             <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-100 flex gap-3 text-xs font-medium text-rose-700 animate-fadeIn">
@@ -78,7 +80,7 @@ export default function Login({ onNavigate }) {
                     setValidationError("");
                     if (setError) setError(null);
                   }}
-                  className="w-full bg-slate-50 border border-slate-200/80 rounded-xl py-2.5 pl-9 pr-3.5 text-xs font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 focus:bg-white transition-all"
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-xl py-2.5 pl-9 pr-3.5 text-xs font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:bg-white transition-all"
                 />
               </div>
             </div>
@@ -101,7 +103,7 @@ export default function Login({ onNavigate }) {
                     setValidationError("");
                     if (setError) setError(null);
                   }}
-                  className="w-full bg-slate-50 border border-slate-200/80 rounded-xl py-2.5 pl-9 pr-3.5 text-xs font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 focus:bg-white transition-all font-mono"
+                  className="w-full bg-slate-50 border border-slate-200/80 rounded-xl py-2.5 pl-9 pr-3.5 text-xs font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:bg-white transition-all font-mono"
                 />
               </div>
             </div>
@@ -110,7 +112,7 @@ export default function Login({ onNavigate }) {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold text-xs uppercase tracking-wider h-11 px-4 rounded-xl shadow-md shadow-violet-600/10 hover:shadow-violet-600/20 flex items-center justify-center gap-2 transition-all duration-150 active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs uppercase tracking-wider h-11 px-4 rounded-xl shadow-md shadow-indigo-600/10 hover:shadow-indigo-600/20 flex items-center justify-center gap-2 transition-all duration-150 active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
           >
             {isLoading ? (
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -129,9 +131,9 @@ export default function Login({ onNavigate }) {
                 type="button"
                 onClick={() => {
                   if (setError) setError(null);
-                  onNavigate("register");
+                  navigate("/register");
                 }}
-                className="text-violet-600 cursor-pointer font-bold hover:text-violet-700 focus:outline-none transition-colors"
+                className="text-indigo-600 cursor-pointer font-bold hover:text-indigo-700 focus:outline-none transition-colors"
               >
                 Create Account
               </button>

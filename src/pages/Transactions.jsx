@@ -56,7 +56,6 @@ export default function Transactions() {
 
   useEffect(() => {
     fetchAccounts();
-    // console.log(typeFilter);
     fetchTransactions(targetMonth, targetYear);
     fetchTransactionType();
   }, [targetMonth, targetYear, fetchAccounts, fetchTransactions]);
@@ -524,7 +523,7 @@ export default function Transactions() {
           </div>
         ) : filteredTransactions.length === 0 ? (
           <div className="p-12 bg-white rounded-2xl border border-violet-100/60 shadow-xs text-center text-xs text-slate-400 font-medium">
-            🍃 No ledger entries found matching this date scope parameters.
+            No ledger entries found matching this date scope parameters.
           </div>
         ) : (
           <div className="space-y-2.5">

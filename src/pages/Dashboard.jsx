@@ -160,7 +160,7 @@ export default function Dashboard() {
           <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between h-28">
             <div className="flex items-center justify-between text-slate-400 text-[10px] font-bold uppercase tracking-wider">
               <span>Total Expenses</span>
-              <div className="w-5 h-5 rounded bg-indigo-50 text-indigo-600 flex items-center justify-center">
+              <div className="w-5 h-5 rounded bg-indigo-50 text-rose-600 flex items-center justify-center">
                 <FiArrowUpRight />
               </div>
             </div>
@@ -212,8 +212,7 @@ export default function Dashboard() {
 
           {categoryBreakdown.length === 0 ? (
             <div className="p-8 text-center text-xs text-slate-400 bg-slate-50 border border-dashed rounded-xl font-medium">
-              🍃 Zero cost distribution records registered inside this date
-              range.
+              You don't have any records yet
             </div>
           ) : (
             <div className="space-y-3.5 pt-1">

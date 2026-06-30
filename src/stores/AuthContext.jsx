@@ -27,19 +27,20 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // register functionality
-  const register = async (username, email, password) => {
+  const register = async (username, email, password, confirmPassword) => {
     setIsLoading(true);
     setError(null);
     try {
       const response = await fetch(
-        `${API_BASE_URL}/api/authentication/register/`,
+        `${API_BASE_URL}/api/authenticate/register/`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            username,
-            email,
-            password,
+            name: username,
+            email: email,
+            password: password,
+            password2: confirmPassword,
           }),
         },
       );
@@ -104,7 +105,6 @@ export const AuthProvider = ({ children }) => {
 
     try {
       if (refreshToken) {
-        // Run the backend blacklist network call to destroy the session token
         await fetch(`${API_BASE_URL}/api/token/blacklist/`, {
           method: "POST",
           headers: {
@@ -117,7 +117,6 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.warn("Backend blacklist rejection skipped:", err.message);
     } finally {
-      // Clear out the local browser memory keys regardless of backend state
       localStorage.removeItem("access_token");
       localStorage.removeItem("refresh_token");
       localStorage.removeItem("email");
@@ -130,7 +129,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  //   the change password functionality
   const changePassword = async (oldPassword, newPassword, confirmPassword) => {
     setIsLoading(true);
     setError(null);
@@ -138,7 +136,7 @@ export const AuthProvider = ({ children }) => {
 
     try {
       const response = await fetch(
-        `${API_BASE_URL}/api/authentication/change-password/`,
+        `${API_BASE_URL}/api/authenticate/change-password/`,
         {
           method: "POST",
           headers: {
@@ -191,8 +189,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Universal hook wrapper for consuming session values cleanly across your views
-// Ensure 'export' is explicitly typed right before the const variable!
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
